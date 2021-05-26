@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import axios from 'axios'
+import '../App.css';
 
 class PostData extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class PostData extends Component {
   }
   changeHandler = e => {
 
-    this.setState({ [e.target.id]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value })
   }
 
 submitHandler = (e) => {
@@ -48,7 +49,7 @@ console.log(response)
     const { name,  address, CreatedBy,  ModifiedBy, Gender,  MobileNo } = this.state
     return (
       <div>
-        <button type="button" className=" btn btn-primary mb-4" style={{ position: "fixed" }} data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" className="addbtn btn btn-primary mb-4" style={{ position: "fixed" }} data-bs-toggle="modal" data-bs-target="#exampleModal">
           Add User
 </button>
         <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,7 +65,7 @@ console.log(response)
 
                   <div className="mb-3" >
                     <label htmlFor="name" className="form-label">name</label>
-                    <input type="text" name="name" className="form-control" id="name" value={name} onChange={this.changeHandler}></input>
+                    <input type="text" name="name" className="form-control" id="name" placeholder="name" value={name} onChange={this.changeHandler}></input>
                   </div>
                   {/* <div className="mb-3">
                     <label htmlFor="CreatedDate" className="form-label">CreatedDate</label>
@@ -87,9 +88,14 @@ console.log(response)
                     <input className="form-control" type="text" id="ModifiedBy" name="ModifiedBy" placeholder="ModifiedBy" value={ModifiedBy} onChange={this.changeHandler} />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="Gender" className="form-label">Gender</label>
-                    <input className="form-control" type="text" name="Gender" id="Gender" placeholder="Gender" value={Gender} onChange={this.changeHandler} />
-                  </div>
+                        <label htmlFor="Gender" className="form-label">male</label>
+                        <input className="form-radio-control" type="radio" name="Gender" id="male" placeholder="Gender" value={'male'} onChange={this.changeHandler} />
+                      </div>
+
+                      <div className="mb-3">
+                        <label htmlFor="Gender" className="form-label">female</label>
+                        <input className="form-radio-control" type="radio" name="Gender" id="female" placeholder="Gender" value={'female'} onChange={this.changeHandler} />
+                      </div>
                  {/*  <div className="mb-3">
                     <label className="form-check-label" htmlFor="Active"> Active</label>
                        <input className="form-check-input" type="radio" name="Active" id="Active"  value={Active} onChange={this.changeHandler}/>

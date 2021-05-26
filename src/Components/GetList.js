@@ -98,11 +98,11 @@ class GetList extends Component {
                   
 
                 
-                <table className="table table-striped">
-  <thead>
-    <tr>
+                <table className="table table-striped ">
+  <thead >
+    <tr className='bg-dark text-white ' style={{position:'sticky'}}>
 
-      <th >Name</th>
+      <th  >Name</th>
 
       <th >Address</th>
       <th>CreatedBy</th>
@@ -111,7 +111,8 @@ class GetList extends Component {
       <th>Gender</th>
 
       <th>MobileNo</th>
-      <th>Action</th>
+      <th>Delete</th>
+      <th>Update</th>
     </tr>
   </thead>
                 {    customerList.length?

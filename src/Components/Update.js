@@ -8,7 +8,7 @@ import axios from 'axios'
     
         this.state = {
             name:'',
-            Address: '',
+            address: '',
             CreatedBy: '',
             ModifiedBy: '',
             Gender: '',
@@ -20,24 +20,28 @@ import axios from 'axios'
 
     changeHandler = e => {
        
-       this.setState({ [e.target.id]: e.target.value })
+       this.setState({ [e.target.name]: e.target.value })
 
         
       }
    updateData=(e)=>{
-    e.preventDefault()
+   // e.preventDefault()
+    
+    console.log(this.state)
 console.log("inside updatedata")
  axios.put(`http://127.0.0.1:8000/Accounts/get/updateAccount/${this.props.updateId}/`,this.state)
 .then(response=>{
 
 console.log(response)
+//form.reset()
 
      })
+     
 }    
 render() {
      
 
-       // const { name, CreatedDate, Address, CreatedBy, ModifiedDate, ModifiedBy, Gender, Active, MobileNo } = this.state
+       // const { name, CreatedDate, address, CreatedBy, ModifiedDate, ModifiedBy, Gender, Active, MobileNo } = this.state
         return (
           <div>
 
@@ -57,34 +61,30 @@ render() {
                         <label htmlFor="name" className="form-label">name</label>
                         <input type="text" name="name" ref={this.nameRef} className="form-control" id="name" defaultValue={this.props.updateCustomer.name} onChange={this.changeHandler}></input>
                       </div>
-                      {/* <div className="mb-3">
-                        <label htmlFor="CreatedDate" className="form-label">CreatedDate</label>
-                        <input className="form-control" type="text" name="CreatedDate" id="CreatedDate" placeholder="Date" defaultValue={this.props.updateCustomerCreatedDate} onChange={this.changeHandler} />
-                      </div> */}
+                
                       <div className="mb-3">
-                        <label htmlFor="Address" className="form-label">Address</label>
-                        <input className="form-control" type="text" name="Address" id="Address" placeholder="Address" defaultValue={this.props.updateCustomer.Address} onChange={this.changeHandler} />
+                        <label htmlFor="address" className="form-label">Address</label>
+                        <input className="form-control" type="text" name="address" id="address" placeholder="address" defaultValue={this.props.updateCustomer.address} onChange={this.changeHandler} />
                       </div>
                       <div className="mb-3">
                         <label htmlFor="createdBy" className="form-label">CreatedBy</label>
                         <input className="form-control" type="text" id="CreatedBy" name="CreatedBy" placeholder="createdBy" defaultValue={this.props.updateCustomer.CreatedBy} onChange={this.changeHandler} />
                       </div>
-                      {/* <div className="mb-3">
-                        <label htmlFor="ModifiedDate" className="form-label">ModifiedDate</label>
-                        <input className="form-control" type="text" id="ModifiedDate" name="ModifiedDate" placeholder="ModifiedDate" value={ModifiedDate} onChange={this.changeHandler} />
-                      </div> */}
+                
                       <div className="mb-3">
                         <label htmlFor="ModifiedBy" className="form-label">ModifiedBy</label>
                         <input className="form-control" type="text" id="ModifiedBy" name="ModifiedBy" placeholder="ModifiedBy" defaultValue={this.props.updateCustomer.ModifiedBy} onChange={this.changeHandler} />
                       </div>
                       <div className="mb-3">
-                        <label htmlFor="Gender" className="form-label">Gender</label>
-                        <input className="form-control" type="text" name="Gender" id="Gender" placeholder="Gender" defaultValue={this.props.updateCustomer.Gender} onChange={this.changeHandler} />
+                        <label htmlFor="Gender" className="form-label">male</label>
+                        <input className="form-radio-control" type="radio" name="Gender" id="male" placeholder="Gender" defaultValue={'male'} onChange={this.changeHandler} />
                       </div>
-                      {/* <div className="mb-3">
-                        <label className="form-check-label" htmlFor="Active"> Active</label>
-                           <input className="form-check-input" type="radio" name="Active" id="Active"  value={Active} onChange={this.changeHandler}/>
-                          </div> */}
+
+                      <div className="mb-3">
+                        <label htmlFor="Gender" className="form-label">female</label>
+                        <input className="form-radio-control" type="radio" name="Gender" id="female" placeholder="Gender" value={'female'} onChange={this.changeHandler} />
+                      </div>
+                   
                           <div className="mb-3">
                             <label htmlFor="MobileNo" className="form-label">MobileNo</label>
                             <input className="form-control" type="text" name="MobileNo" id="MobileNo" placeholder="MobileNo" defaultValue={this.props.updateCustomer.MobileNo} onChange={this.changeHandler} />
